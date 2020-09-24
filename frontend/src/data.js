@@ -1,7 +1,7 @@
 export default {
   products: [
     {
-      id: 1,
+      _id: 1,
       name: 'X-Ray 2',
       category: 'Sneakers',
       image: '/images/X-Ray-2-Square-IMEVA-SoftFoam+-Shoes.webp',
@@ -11,7 +11,7 @@ export default {
       numReviews: 10,
     },
     {
-      id: 2,
+      _id: 2,
       name: 'X-Ray 4',
       category: 'Sneakers',
       image: '/images/X-Ray-2-Square-IMEVA-SoftFoam+-Shoes.webp',
@@ -21,7 +21,7 @@ export default {
       numReviews: 10,
     },
     {
-      id: 3,
+      _id: 3,
       name: 'X-Ray 5',
       category: 'Sports',
       image: '/images/X-Ray-2-Square-IMEVA-SoftFoam+-Shoes.webp',
@@ -29,6 +29,16 @@ export default {
       brand: 'Puma',
       rating: 4.3,
       numReviews: 10,
+    },
+    {
+      _id: 4,
+      name: 'X-Ray 7',
+      category: 'Sports',
+      image: '/images/X-Ray-2-Square-IMEVA-SoftFoam+-Shoes.webp',
+      price: 90,
+      brand: 'Puma',
+      rating: 3.3,
+      numReviews: 7,
     },
   ],
 };

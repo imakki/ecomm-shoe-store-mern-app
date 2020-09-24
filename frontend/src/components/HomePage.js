@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import data from '../data';
 
 const HomePage = () => {
@@ -6,16 +7,18 @@ const HomePage = () => {
     <ul className="products">
       {data.products.map((product) => {
         return (
-          <li key={product.id}>
+          <li key={product._id}>
             <div className="product">
-              <img src={product.image} alt="" className="product-image" />
+              <Link to={'/products/' + product._id}>
+                <img src={product.image} alt="" className="product-image" />
+              </Link>
               <div className="product-name">
-                <a href="product.html">{product.name}</a>
+                <Link to={'/products/' + product._id}>{product.name}</Link>
               </div>
               <div className="product-brand">{product.brand}</div>
               <div className="product-price">${product.price}</div>
               <div className="product-rating">
-                {product.rating}stars ({product.numReviews}reviews)
+                {product.rating}stars ({product.numReviews} reviews)
               </div>
             </div>
           </li>

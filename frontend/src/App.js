@@ -3,7 +3,8 @@ import './App.css';
 import data from './data';
 import HomePage from './components/HomePage';
 import ProductPage from './components/ProductPage';
-import { Route, Switch } from 'react-router-dom';
+import NotFound from './components/NotFound';
+import { Route, Switch, Link } from 'react-router-dom';
 
 function App() {
   const openMenu = () => {
@@ -19,7 +20,7 @@ function App() {
       <header className="header">
         <div className="brand">
           <button onClick={openMenu}>&#9776;</button>
-          <a href="index.html">Kicks</a>
+          <Link to="/">Kicks</Link>
         </div>
         <div className="header-links">
           <a href="cart">Cart</a>
@@ -45,6 +46,9 @@ function App() {
           <Switch>
             <Route path="/products/:id" component={ProductPage} />
             <Route path="/" exact component={HomePage} />
+            <Route path="*">
+              <NotFound />
+            </Route>
           </Switch>
         </div>
       </main>
