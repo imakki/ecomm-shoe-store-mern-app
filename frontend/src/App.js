@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import data from './data';
 import HomePage from './components/HomePage';
 import ProductPage from './components/ProductPage';
 import NotFound from './components/NotFound';

@@ -4,7 +4,7 @@ import data from '../data';
 const ProductPage = (props) => {
   let { id } = useParams();
 
-  const product = data.products.find((x) => x._id == id);
+  const product = data.products.find((x) => x._id === id);
 
   return (
     <div className="details">
