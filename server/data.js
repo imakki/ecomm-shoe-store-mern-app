@@ -9,6 +9,7 @@ export default {
       brand: 'Puma',
       rating: 4.5,
       numReviews: 10,
+      countInStock: 6,
     },
     {
       _id: '2',
@@ -19,6 +20,7 @@ export default {
       brand: 'Puma',
       rating: 4.0,
       numReviews: 10,
+      countInStock: 8,
     },
     {
       _id: '3',
@@ -29,6 +31,7 @@ export default {
       brand: 'Puma',
       rating: 4.3,
       numReviews: 10,
+      countInStock: 4,
     },
     {
       _id: '4',
@@ -39,6 +42,7 @@ export default {
       brand: 'Puma',
       rating: 3.3,
       numReviews: 7,
+      countInStock: 5,
     },
   ],
 };
