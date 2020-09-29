@@ -4,6 +4,7 @@ import HomePage from './components/HomePage';
 import ProductPage from './components/ProductPage';
 import NotFound from './components/NotFound';
 import { Route, Switch, Link } from 'react-router-dom';
+import Cart from './components/Cart';
 
 function App() {
   const openMenu = () => {
@@ -44,6 +45,7 @@ function App() {
         <div className="content">
           <Switch>
             <Route path="/products/:id" component={ProductPage} />
+            <Route path="/cart/:id?" component={Cart} />
             <Route path="/" exact component={HomePage} />
             <Route path="*">
               <NotFound />
