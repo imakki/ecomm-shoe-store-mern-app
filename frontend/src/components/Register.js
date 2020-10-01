@@ -15,7 +15,7 @@ const Register = () => {
 
   useEffect(() => {
     if (userInfo) {
-      console.log(userInfo);
+      history.push('/');
     }
   }, [userInfo]);
 

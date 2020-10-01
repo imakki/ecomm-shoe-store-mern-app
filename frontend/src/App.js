@@ -8,6 +8,7 @@ import Cart from './components/Cart';
 import SignIn from './components/SignIn';
 import { useSelector } from 'react-redux';
 import Register from './components/Register';
+import CreateProduct from './components/CreateProduct';
 
 function App() {
   const userLoggedIn = useSelector((state) => state.userSignIn);
@@ -54,6 +55,7 @@ function App() {
       <main className="main">
         <div className="content">
           <Switch>
+            <Route path="/createProduct" component={CreateProduct} />
             <Route path="/signin" component={SignIn} />
             <Route path="/register" component={Register} />
             <Route path="/products/:id" component={ProductPage} />
