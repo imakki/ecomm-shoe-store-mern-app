@@ -9,6 +9,9 @@ import SignIn from './components/SignIn';
 import { useSelector } from 'react-redux';
 import Register from './components/Register';
 import CreateProduct from './components/CreateProduct';
+import Shipping from './components/Shipping';
+import Payment from './components/Payment';
+import PlaceOrder from './components/PlaceOrder';
 
 function App() {
   const userLoggedIn = useSelector((state) => state.userSignIn);
@@ -56,6 +59,9 @@ function App() {
         <div className="content">
           <Switch>
             <Route path="/createProduct" component={CreateProduct} />
+            <Route path="/shipping" component={Shipping} />
+            <Route path="/payment" component={Payment} />
+            <Route path="/placeorder" component={PlaceOrder} />
             <Route path="/signin" component={SignIn} />
             <Route path="/register" component={Register} />
             <Route path="/products/:id" component={ProductPage} />

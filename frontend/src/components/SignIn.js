@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signin } from '../actions/userActions';
 
-const SignIn = () => {
+const SignIn = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [email, setEmail] = useState('');
@@ -12,9 +12,13 @@ const SignIn = () => {
   const userSignIn = useSelector((state) => state.userSignIn);
   const { loading, userInfo, error } = userSignIn;
 
+  const redirect = props.location.search
+    ? props.location.search.split('=')[1]
+    : '/';
+
   useEffect(() => {
     if (userInfo) {
-      history.push('/');
+      history.push(redirect);
     }
   }, [userInfo]);
 
@@ -58,7 +62,12 @@ const SignIn = () => {
           </li>
           <li>New to kicks?</li>
           <li>
-            <Link to="/register" className="button secondary text-center">
+            <Link
+              to={
+                redirect === '/' ? 'register' : 'register?redirect=' + redirect
+              }
+              className="button secondary text-center"
+            >
               Create new Account
             </Link>
           </li>

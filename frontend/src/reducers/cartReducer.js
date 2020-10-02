@@ -3,9 +3,14 @@ const {
   CART_ADD_SUCCESS,
   CART_ADD_FAIL,
   CART_REMOVE_ITEM,
+  SHIPPING_SAVE_SUCCESS,
+  PAYMENT_SAVE_SUCCESS,
 } = require('../constants/productConstants');
 
-function cartReducer(state = { cartItems: [] }, action) {
+function cartReducer(
+  state = { cartItems: [], shipping: {}, payment: {} },
+  action
+) {
   switch (action.type) {
     case CART_ADD_SUCCESS:
       const item = action.payload;
@@ -22,6 +27,16 @@ function cartReducer(state = { cartItems: [] }, action) {
     case CART_REMOVE_ITEM:
       return {
         cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+      };
+    case SHIPPING_SAVE_SUCCESS:
+      return {
+        ...state,
+        shipping: action.payload,
+      };
+    case PAYMENT_SAVE_SUCCESS:
+      return {
+        ...state,
+        payment: action.payload,
       };
     default:
       return state;

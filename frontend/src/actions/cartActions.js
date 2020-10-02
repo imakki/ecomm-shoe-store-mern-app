@@ -3,6 +3,8 @@ import Cookie from 'js-cookie';
 const {
   CART_ADD_SUCCESS,
   CART_REMOVE_ITEM,
+  SHIPPING_SAVE_SUCCESS,
+  PAYMENT_SAVE_SUCCESS,
 } = require('../constants/productConstants');
 
 const addToCart = (productId, quantity) => async (dispatch, getState) => {
@@ -34,4 +36,12 @@ const removeFromCart = (productId) => async (dispatch, getState) => {
   Cookie.set('cart', JSON.stringify(cartItems));
 };
 
-export { addToCart, removeFromCart };
+const saveShipping = (data) => async (dispatch) => {
+  dispatch({ type: SHIPPING_SAVE_SUCCESS, payload: data });
+};
+
+const savePayment = (data) => async (dispatch) => {
+  dispatch({ type: PAYMENT_SAVE_SUCCESS, payload: data });
+};
+
+export { addToCart, removeFromCart, saveShipping, savePayment };
