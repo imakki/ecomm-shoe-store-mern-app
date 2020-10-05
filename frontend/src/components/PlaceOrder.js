@@ -47,7 +47,7 @@ const PlaceOrder = () => {
 
   useEffect(() => {
     if (success) {
-      history.push('/order/' + order.id);
+      history.push('/order/' + order._id);
     }
   }, [success]);
 
