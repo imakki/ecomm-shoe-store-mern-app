@@ -12,6 +12,7 @@ import CreateProduct from './components/CreateProduct';
 import Shipping from './components/Shipping';
 import Payment from './components/Payment';
 import PlaceOrder from './components/PlaceOrder';
+import OrderPage from './components/OrderPage';
 
 function App() {
   const userLoggedIn = useSelector((state) => state.userSignIn);
@@ -58,6 +59,7 @@ function App() {
       <main className="main">
         <div className="content">
           <Switch>
+            <Route path="/order/:id" component={OrderPage} />
             <Route path="/createProduct" component={CreateProduct} />
             <Route path="/shipping" component={Shipping} />
             <Route path="/payment" component={Payment} />

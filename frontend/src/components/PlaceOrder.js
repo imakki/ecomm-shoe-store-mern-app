@@ -1,21 +1,26 @@
 import React, { useEffect } from 'react';
 import { useHistory, useParams, useLocation, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, removeFromCart } from '../actions/cartActions';
+import { createOrder } from '../actions/orderActions';
 import CheckoutSteps from '../wizard/CheckoutSteps';
 
 const PlaceOrder = () => {
   let { id } = useParams();
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
+  const orderCreate = useSelector((state) => state.orderCreate);
+
   const { cartItems, shipping, payment } = cart;
+  const { loading, success, order, error } = orderCreate;
 
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
   const shippingPrice = itemsPrice > 100 ? 0 : 10;
   const taxPrice = 0.18 * itemsPrice;
 
   const totalPrice = itemsPrice + shippingPrice + taxPrice;
+
   if (!shipping.address) {
     history.push('/shipping');
   } else if (!payment.paymentMethod) {
@@ -27,8 +32,24 @@ const PlaceOrder = () => {
   };
 
   const placeOrderHandler = () => {
-    console.log('order placed!!!');
+    dispatch(
+      createOrder({
+        orderItems: cartItems,
+        shipping,
+        payment,
+        itemsPrice,
+        shippingPrice,
+        taxPrice,
+        totalPrice,
+      })
+    );
   };
+
+  useEffect(() => {
+    if (success) {
+      history.push('/order/' + order.id);
+    }
+  }, [success]);
 
   return (
     <div>

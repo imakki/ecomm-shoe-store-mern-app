@@ -2,6 +2,7 @@ import express from 'express';
 import data from './data';
 import userRoute from './routes/userRoute';
 import productRoute from './routes/productRoute';
+import orderRoute from './routes/orderRoute';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 var cors = require('cors');
@@ -24,6 +25,7 @@ app.use(cors());
 
 app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
+app.use('/api/orders', orderRoute);
 
 app.listen(8000, () => {
   console.log('Server started 🚀 at http://localhost:8000');
