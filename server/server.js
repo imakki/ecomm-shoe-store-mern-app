@@ -26,6 +26,9 @@ app.use(cors());
 app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
 app.use('/api/orders', orderRoute);
+app.get('/api/config/paypal', (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID);
+});
 
 app.listen(8000, () => {
   console.log('Server started 🚀 at http://localhost:8000');

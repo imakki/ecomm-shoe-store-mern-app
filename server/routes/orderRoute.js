@@ -41,4 +41,24 @@ router.post('/createOrder', isAuth, async (req, res) => {
   }
 });
 
+router.put('/:id/pay', isAuth, async (req, res) => {
+  const order = await Order.findById(req.params.id);
+  if (order) {
+    order.isPaid = true;
+    order.paidAt = Date.now();
+    order.payment = {
+      paymentMethod: 'paypal',
+      paymentResult: {
+        payerId: req.body.payerId,
+        orderId: req.body.orderId,
+        paymentId: req.body.paymentId,
+      },
+    };
+    const updateOrder = await order.save();
+    res.send({ message: 'Order Paid.', order: updateOrder });
+  } else {
+    res.status(404).send({ message: 'Order not found!' });
+  }
+});
+
 export default router;
