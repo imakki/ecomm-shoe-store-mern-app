@@ -4,6 +4,17 @@ import { isAuth } from '../util';
 
 const router = express.Router();
 
+router.get('/myOrders', isAuth, async (req, res) => {
+  //console.log('here');
+
+  const orders = await Order.find({ user: req.user._id });
+  if (orders) {
+    res.send(orders);
+  } else {
+    res.send({ message: 'No order found for this user' });
+  }
+});
+
 router.get('/:id', isAuth, async (req, res) => {
   //console.log(req.params.id);
   const order = await Order.findOne({ _id: req.params.id });

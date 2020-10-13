@@ -9,8 +9,13 @@ import thunk from 'redux-thunk';
 import Cookie from 'js-cookie';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { cartReducer } from './reducers/cartReducer';
-import { userLoginReducer, userRegisterReducer } from './reducers/userReducer';
 import {
+  userLoginReducer,
+  userRegisterReducer,
+  userUpdateReducer,
+} from './reducers/userReducer';
+import {
+  myOrderListReducer,
   orderCreateReducer,
   orderDetailReducer,
   orderPayReducer,
@@ -35,6 +40,8 @@ const reducer = combineReducers({
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailReducer,
   orderPay: orderPayReducer,
+  myOrderList: myOrderListReducer,
+  userUpdate: userUpdateReducer,
 });
 
 const store = createStore(
