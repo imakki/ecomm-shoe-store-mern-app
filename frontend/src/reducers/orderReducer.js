@@ -11,6 +11,12 @@ const {
   MYORDER_LIST_REQUEST,
   MYORDER_LIST_SUCCESS,
   MYORDER_LIST_FAIL,
+  ORDER_LIST_REQUEST,
+  ORDER_LIST_SUCCESS,
+  ORDER_LIST_FAIL,
+  ORDER_DELETE_FAIL,
+  ORDER_DELETE_REQUEST,
+  ORDER_DELETE_SUCCESS,
 } = require('../constants/productConstants');
 
 function orderCreateReducer(state = {}, action) {
@@ -76,9 +82,40 @@ function myOrderListReducer(state = { orders: [] }, action) {
   }
 }
 
+function orderListReducer(state = { orders: [] }, action) {
+  switch (action.type) {
+    case ORDER_LIST_REQUEST:
+      return { ...state, loading: true };
+    case ORDER_LIST_SUCCESS:
+      return { loading: false, orders: action.payload };
+    case ORDER_LIST_FAIL:
+      return { ...state, loading: false };
+    default:
+      return state;
+  }
+}
+
+function orderDeleteReducer(
+  state = { order: { orderItems: [], shipping: {}, payment: {} } },
+  action
+) {
+  switch (action.type) {
+    case ORDER_DELETE_REQUEST:
+      return { ...state, loading: true };
+    case ORDER_DELETE_SUCCESS:
+      return { ...state, loading: false, success: true };
+    case ORDER_DELETE_FAIL:
+      return { ...state, loading: false };
+    default:
+      return state;
+  }
+}
+
 export {
   orderCreateReducer,
   orderDetailReducer,
   orderPayReducer,
   myOrderListReducer,
+  orderListReducer,
+  orderDeleteReducer,
 };

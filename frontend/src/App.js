@@ -14,6 +14,7 @@ import Payment from './components/Payment';
 import PlaceOrder from './components/PlaceOrder';
 import OrderPage from './components/OrderPage';
 import Profile from './components/Profile';
+import OrdersPage from './components/OrdersPage';
 
 function App() {
   const userLoggedIn = useSelector((state) => state.userSignIn);
@@ -41,6 +42,17 @@ function App() {
           ) : (
             <Link to="/signin">SignIn</Link>
           )}
+          {userInfo && userInfo.isAdmin && (
+            <div className="dropdown">
+              <a href="#">Admin</a>
+              <ul className="dropdown-content">
+                <li>
+                  <Link to="/orders">Orders</Link>
+                  <Link to="/products">Products</Link>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </header>
       <aside className="sidebar">
@@ -60,6 +72,7 @@ function App() {
       <main className="main">
         <div className="content">
           <Switch>
+            <Route path="/orders" component={OrdersPage} />
             <Route path="/profile" component={Profile} />
             <Route path="/order/:id" component={OrderPage} />
             <Route path="/createProduct" component={CreateProduct} />
